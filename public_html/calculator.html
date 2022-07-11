@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JS NUMBERS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <style>
+
+            *{
+                box-sizing: border-box;
+            }
+            button{
+                width: 45px;
+                height: 40px;
+                border:1px solid #000;
+                font-size: 20px;
+                line-height: 38px;
+                vertical-align: top;
+                background: #f0f0f0;
+                margin-bottom: 10px;
+                cursor:pointer;
+                display: inline-block;
+                border-radius: 3px;
+            }
+            input{
+                height: 40px;
+                border:1px solid #000;
+                padding: 0 5px;
+                vertical-align: top;
+                background: #f2f2f2;
+                font-size: 24px;
+                width: 240px;
+                margin-bottom: 10px;
+                color:#000;
+            }
+            .long{
+                width: 95px;
+            }
+            .opp{
+                background: orange;
+                color:#fff;
+            }
+        </style>
+    </head>
+    <body>
+
+
+
+
+
+        <h2>KALKULATOR</h2>
+
+
+        <input type="text" placeholder="0" value="" id="unos" disabled="" style="text-align: right">
+
+        <br>
+        <button onclick="square();">&Sqrt;</button><!--kvadratni koren-->
+        <button onclick="insertCharacter('&lpar;');" >&lpar;</button><!--leva zagrada-->
+        <button onclick="insertCharacter('&rpar;');" >&rpar;</button><!--desna zagrada-->
+        <button onclick="deleteCharacter();">&lang;-</button> <!--brisanje jednog elementa-->
+        <button onclick="setInputValue('');">AC</button> <!-- brisanje svega-->
+
+        <br>
+        <button onclick="power();">x<sup>2</sup></button> <!--na kvadrat-->
+        <button onclick="insertCharacter(7);">7</button> <!--Unesi 7-->
+        <button onclick="insertCharacter(8);">8</button><!--Unesi 8-->
+        <button onclick="insertCharacter(9);">9</button> <!--Unesi 9-->
+        <button onclick="insertCharacter('/');" class="opp">/</button> <!--podeli-->
+
+        <br>
+        <button onclick="cosine();">cos</button>  <!--izracunaj kosinus-->
+        <button onclick="insertCharacter(4);">4</button>  <!--Unesi 4-->
+        <button onclick="insertCharacter(5);">5</button>  <!--Unesi 5-->
+        <button onclick="insertCharacter(6);">6</button>  <!--Unesi 6-->
+        <button onclick="insertCharacter('*');" class="opp">*</button>  <!--pomnozi-->
+
+        <br>
+        <button onclick="sine();">sin</button>  <!--Izracunaj sinus-->
+        <button onclick="insertCharacter(1);">1</button>  <!--Unesi 1-->
+        <button onclick="insertCharacter(2);">2</button> <!--Unesi 2-->
+        <button onclick="insertCharacter(3);">3</button> <!--Unesi 3-->
+        <button onclick="insertCharacter('-');" class="opp">-</button>  <!--oduzimanje-->
+
+        <br>
+        <button onclick="insertCharacter(0);" class="long">0</button>  <!--Unesi 0-->
+        <button onclick="insertCharacter('.');">.</button> <!--Unesi .-->
+        <button onclick="calculate();" class="opp">=</button> <!--IZRACUNAJ-->
+        <button onclick="insertCharacter('+');" class="opp">+</button>  <!--saberi -->
+
+
+
+
+
+
+        <script type="text/javascript">
+
+
+
+            //Napraviti kalkulator
+            //Kalkulator treba da sadrzi brojeve od 0 - 9 koji su button
+            //input za ispisivanje i unos type(text), DISABLED
+            // dugme za resetovanje unosa
+            //dugme za brisanje zadnje unesene vrednosti
+            //dugmice za +, -, *, / , racunanje kvadratnog koren, racunanje kvadrata, sinusa i cosinusa
+
+
+
+            function getInputValue() {
+                let currentEntry = document.getElementById('unos').value;
+                return currentEntry;
+            }
+
+
+            function insertCharacter(character) {
+                let currentEntry = getInputValue();
+                let newEntry = currentEntry + character;
+                //document.getElementById('unos').value = newEntry;
+                setInputValue(newEntry);
+            }
+
+
+            function setInputValue(data) {
+                document.getElementById('unos').value = data;
+            }
+
+
+            function calculate() {
+                let currentEntry = getInputValue();
+                let result = eval(currentEntry);
+                setInputValue(result);
+            }
+
+
+            function deleteCharacter() {
+                let currentEntry = getInputValue();
+                let finalEntry = currentEntry.substr(0, currentEntry.length - 1);
+                setInputValue(finalEntry);
+            }
+
+
+            function power() {
+                let currentEntry = getInputValue();
+                let result = eval(currentEntry);
+                let powResult = Math.pow(result, 2);
+                setInputValue(powResult);
+            }
+
+
+            function square() {
+                let currentEntry = getInputValue();
+                let result = eval(currentEntry);
+                let sqrtResult = Math.sqrt(result);
+                setInputValue(sqrtResult);
+            }
+
+
+            function sine() {
+                let currentEntry = getInputValue();
+                let degrees = eval(currentEntry);
+                let radians = degrees * Math.PI / 180;
+                let sinResult = Math.sin(radians);
+                setInputValue(sinResult);
+            }
+
+
+            function cosine() {
+                let currentEntry = getInputValue();
+                let degrees = eval(currentEntry);
+                let radians = degrees * Math.PI / 180;
+                let cosResult = Math.cos(radians);
+                setInputValue(cosResult);
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+    </body>
+</html>
